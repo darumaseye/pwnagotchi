@@ -210,7 +210,7 @@ class Agent(Client, AsyncAdvertiser, AsyncTrainer):
         try:
             s = self.session()
             for ap in s['wifi']['aps']:
-                if ap['hostname'] not in whitelist:
+                if ap['hostname'] not in whitelist and ap['mac'] not in whitelist:
                     if self._filter_included(ap):
                         aps.append(ap)
         except Exception as e:
